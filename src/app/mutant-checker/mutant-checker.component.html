@@ -1,6 +1,33 @@
 <div class="container">
-    <h2>Detector de Mutantes</h2>
-    <textarea [(ngModel)]="dnaInput" placeholder="Ingresa la secuencia de ADN"></textarea>
-    <button (click)="checkMutant()">Verificar</button>
-    <p *ngIf="result !== null">Resultado: {{ result ? 'Mutante' : 'No mutante' }}</p>
+  <h2>Detector de Mutantes por ADN</h2>
+  
+  <p class="instructions">
+    Ingresa una secuencia de ADN en el siguiente formato:<br>
+    Cada línea debe contener exactamente 6 letras (A, T, C, G), separadas por saltos de linea(Enter).  
+    <br><br>
+    <strong>Ejemplo válido:</strong><br>
+    <code>ATGCTA<br>
+    CAGTGC<br>
+    TCTAGT<br>
+    AGACGT<br>
+    GCGTCA<br>
+    TCACTG</code>
+    <br><br>
+    ❌ <strong>Ejemplo incorrecto:</strong><br>
+    <span style="color: red;">(Usan comillas "" y comas ',')</span><br>
+    <code>"ATGCT",   <span style="color: red;">(menos de 6 caracteres)</span><br>
+    "CAGTGCX", <span style="color: red;">(letra inválida 'X')</span><br>
+    "TCTAGT",<br>
+    "AGACG",   <span style="color: red;">(menos de 6 caracteres)</span><br>
+    "GCGTCA",<br>
+    "TCAC-TG" <span style="color: red;">(símbolo inválido '-')</span></code>
+  </p>
+
+  <textarea [(ngModel)]="dnaInput" placeholder="Ingresa una secuencia de ADN..."></textarea>
+  
+  <button (click)="checkMutant()">Validar ADN</button>
+  
+  <div *ngIf="result !== null" class="result" [ngClass]="result ? 'success' : 'error'">
+    {{ result ? '¡Mutante detectado! 🧬' : 'No es mutante ❌' }}
+  </div>
 </div>
