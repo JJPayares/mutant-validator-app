@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MutantCheckerComponent } from './mutant-checker/mutant-checker.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [MutantCheckerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
